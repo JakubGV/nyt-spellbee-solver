@@ -1,4 +1,5 @@
 import argparse
+import time
 from itertools import product
 
 def parse_args() -> dict:
@@ -50,9 +51,11 @@ def print_words(words_by_length: dict) -> None:
   for length, words in words_by_length.items():
     words.sort()
     joined_words = ' '.join(words)
-    print(f'Words of length {length}: {joined_words}')
+    print(f'Words of length {length}:'.ljust(19), f'{joined_words}')
 
 def main():
+  start = time.time()
+  
   args_dict = parse_args()
 
   with open('word_list.txt') as word_file:
@@ -61,6 +64,9 @@ def main():
   words_by_length = find_all_words(word_list, args_dict['letters'], args_dict['max_length'])
 
   print_words(words_by_length)
+
+  end = time.time()
+  print('Execution took:'.ljust(15), f'{end-start:.4f}s')
 
 if __name__ == '__main__':
   main()
