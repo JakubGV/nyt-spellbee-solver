@@ -1,6 +1,5 @@
 import argparse
 import time
-from itertools import product
 
 def parse_args() -> dict:
   parser = argparse.ArgumentParser(description='Solve the NYT spelling bee')
@@ -23,17 +22,20 @@ def parse_args() -> dict:
     'max_length': args.max_length
   }
 
-def is_word(word_list, word: str) -> bool:
-  return word in word_list
-
-def find_words(word_list, letters: tuple, length: int) -> list:
-  needed_letter = letters[0]
-  word = needed_letter + 3 * letters[1]
+def find_words(word_list: set, letters: tuple, length: int) -> list:
   found_words = []
-
-  possibilities = map(''.join, product(letters, repeat=length))
-  for word in possibilities:
-    if needed_letter in word and is_word(word_list, word):
+  
+  for word in word_list:
+    valid_word = True
+    if len(word) != length or letters[0] not in word:
+      continue
+    else:
+      for letter in word:
+        if letter not in letters:
+          valid_word = False
+          break
+    
+    if valid_word:
       found_words.append(word)
 
   return found_words
@@ -53,12 +55,19 @@ def print_words(words_by_length: dict) -> None:
     joined_words = ' '.join(words)
     print(f'Words of length {length}:'.ljust(19), f'{joined_words}')
 
+def count_words(words_by_length: dict) -> int:
+  count = 0
+  for length, words in words_by_length.items():
+    count += len(words)
+
+  return count
+
 def main():
   start = time.time()
   
   args_dict = parse_args()
 
-  with open('word_list.txt') as word_file:
+  with open('word_list.txt', 'r') as word_file:
     word_list = set(word.strip() for word in word_file)
 
   words_by_length = find_all_words(word_list, args_dict['letters'], args_dict['max_length'])
@@ -67,6 +76,9 @@ def main():
 
   end = time.time()
   print('Execution took:'.ljust(15), f'{end-start:.4f}s')
+  
+  count = count_words(words_by_length)
+  print(f'Number of words found: {count}')
 
 if __name__ == '__main__':
   main()
