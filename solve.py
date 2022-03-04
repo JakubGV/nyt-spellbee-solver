@@ -1,33 +1,34 @@
 import argparse
 import time
 
-def parse_args() -> dict:
-  parser = argparse.ArgumentParser(description='Solve the NYT spelling bee')
-  parser.add_argument('letters', help='The 7 letters of the spelling bee with no spaces. (First is necessary letter)')
-  parser.add_argument('max_length', type=int, help='Max length of word to find. (4 <= length <= 20)')
+def parse_args() -> tuple:
+  parser = argparse.ArgumentParser(description='Solve the NYT spelling bee.')
+  parser.add_argument('letters', help='The 7 letters of the spelling bee with no spaces. (First must be the necessary letter)')
 
   args = parser.parse_args()
 
   if len(args.letters) != 7:
     raise ValueError('Only 7 letters may be entered')
-  if not 4 <= args.max_length <= 20:
-    raise ValueError('Lengh must be between 4 and 20 inclusive')
   
   letters = []
   for letter in args.letters:
     letters.append(letter)
 
-  return {
-    'letters': letters,
-    'max_length': args.max_length
-  }
+  return tuple(letters)
 
-def find_words(word_list: set, letters: tuple, length: int) -> list:
+def find_all_words(word_list: tuple, letters: tuple) -> tuple:
+  """
+  find_all_words finds all the words from the word_list that are only made up of the specified letters.
+
+  :param word_list: the words that make up the list of words to search in
+  :param letters: the letters on which to find words from
+  :return: a tuple of words are only made up of the specified letters
+  """
   found_words = []
   
   for word in word_list:
     valid_word = True
-    if len(word) != length or letters[0] not in word:
+    if len(word) < 4 or letters[0] not in word:
       continue
     else:
       for letter in word:
@@ -38,26 +39,47 @@ def find_words(word_list: set, letters: tuple, length: int) -> list:
     if valid_word:
       found_words.append(word)
 
-  return found_words
+  return tuple(found_words)
 
-def find_all_words(word_list, letters: tuple, max_length: int) -> dict:
+def organize_words_by_length(found_words: tuple) -> dict:
+  """
+  organize_words_by_length organizes the found words into a dictionary by length.
+
+  :param found_words: the tuple of words to organize
+  :return: a dict with key value pairs of a length to a list of words at that length
+  """
   words_by_length = {}
-  for length in range(4, max_length + 1):
-    key = length
-    val = find_words(word_list, letters, length)
-    words_by_length[key] = val
-
+  
+  for word in found_words:
+    length = len(word)
+    if length in words_by_length:
+      words_by_length[length].append(word)
+    else:
+      words_by_length[length] = [word]
+  
   return words_by_length
 
 def print_words(words_by_length: dict) -> None:
-  for length, words in words_by_length.items():
+  """
+  print_words prints the words found by length first and by alphabetical order second.
+
+  :param words_by_length: a dict with key value pairs of a length to a list of words at that length
+  """
+  for length in sorted(words_by_length):
+    words = words_by_length[length]
     words.sort()
     joined_words = ' '.join(words)
     print(f'Words of length {length}:'.ljust(19), f'{joined_words}')
 
 def count_words(words_by_length: dict) -> int:
+  """
+  count_words counts the number of words in the words by length dict.
+
+  :param words_by_length: a dict with key value pairs of a length to a list of words at that length
+  :return: number of words
+  """
   count = 0
-  for length, words in words_by_length.items():
+  for _, words in words_by_length.items():
     count += len(words)
 
   return count
@@ -65,12 +87,14 @@ def count_words(words_by_length: dict) -> int:
 def main():
   start = time.time()
   
-  args_dict = parse_args()
+  letters = parse_args()
 
   with open('word_list.txt', 'r') as word_file:
-    word_list = set(word.strip() for word in word_file)
+    word_list = tuple(word.strip() for word in word_file)
 
-  words_by_length = find_all_words(word_list, args_dict['letters'], args_dict['max_length'])
+  found_words = find_all_words(word_list, letters)
+  
+  words_by_length = organize_words_by_length(found_words)
 
   print_words(words_by_length)
 

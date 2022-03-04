@@ -1,16 +1,12 @@
 import argparse
 
-def parse_args() -> dict:
+def parse_args() -> str:
   parser = argparse.ArgumentParser(description='Insert a word into the specified word list.')
-  parser.add_argument('file', help='The name of the file to insert into.')
   parser.add_argument('word', help='The word to insert.')
 
   args = parser.parse_args()
 
-  return {
-    'file': args.file,
-    'word': args.word.lower()
-  }
+  return args.word.lower()
 
 def insert_word(word_list: list, word_to_insert: str) -> str:
   index_to_insert = 0
@@ -30,9 +26,8 @@ def insert_word(word_list: list, word_to_insert: str) -> str:
   return contents
 
 def main():
-  args = parse_args()
-  word_to_insert = args['word']
-  file = args['file']
+  word_to_insert = parse_args()
+  file = 'word_list.txt'
 
   with open(file, 'r') as word_file:
     word_list = [word.strip() for word in word_file]
