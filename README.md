@@ -18,4 +18,4 @@ From the command line, a simple `py solve.py lpubicy` will print out all the wor
 I also created a script called [insert_words.py](./insert_words.py) to support the vision of growing the word list to return better and better answers. Run the script with any number of words as the command line arguments and it will insert them, in alphabetical order, into the word list.
 
 ## Credits
-The original word list I used at the very start of this program is not mine, but is in fact Mieliestronk's. A link to that original word list is [here](http://www.mieliestronk.com/wordlist.html).
+The original word list I used at the very start of this program is not mine but Mieliestronk's. A link to that original word list is [here](http://www.mieliestronk.com/wordlist.html).

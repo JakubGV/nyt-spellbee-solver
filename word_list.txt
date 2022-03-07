@@ -4687,6 +4687,7 @@ bickerings
 bicycle
 bicycled
 bicycles
+bicyclic
 bicycling
 bid
 bidden
@@ -7600,6 +7601,7 @@ celeriac
 celery
 celestial
 celestially
+celiac
 celibacy
 celibate
 cell
@@ -8786,6 +8788,7 @@ clinking
 clip
 clipboard
 clipboards
+clippable
 clipped
 clipper
 clippers
@@ -8891,6 +8894,7 @@ cloyingly
 club
 clubbed
 clubbing
+clubby
 clubfooted
 clubhouse
 clubman
@@ -27413,6 +27417,7 @@ ionospheric
 ions
 iota
 iotas
+ipecac
 iran
 iranian
 iranians
@@ -36621,6 +36626,7 @@ peopled
 peoples
 pep
 peperoni
+pepped
 pepper
 peppercorn
 peppercorns
@@ -38169,6 +38175,7 @@ pooling
 pools
 poolside
 poop
+pooped
 poor
 poorer
 poorest
@@ -54772,6 +54779,7 @@ unpasteurised
 unpatriotic
 unpaved
 unpeeled
+unpenned
 unperceived
 unpersonalised
 unpersuaded

@@ -6,9 +6,19 @@ def parse_args() -> tuple:
 
   args = parser.parse_args()
 
+  if len(args.words) < 1:
+    raise ValueError('No word provided to insert')
+
   return tuple(args.words)
 
 def insert_word(word_list: list, word_to_insert: str) -> bool:
+  """
+  insert_word inserts a singular word into the specified word_list.
+
+  :param word_list: the word list to insert into
+  :param word_to_insert: the word to insert into the word list
+  :return: a value of True upon successful insertion, otherwise False
+  """
   index_to_insert = 0
   for i, word in enumerate(word_list):
     if word_to_insert < word:
@@ -23,7 +33,13 @@ def insert_word(word_list: list, word_to_insert: str) -> bool:
   word_list.insert(index_to_insert, word_to_insert)
   return True
   
-def insert_words(word_list: list, words_to_insert: tuple) -> str:
+def insert_words(word_list: list, words_to_insert: tuple) -> None:
+  """
+  insert_words tries to insert a tuple of words into the word list and keeps track of which were successful and which weren't.
+
+  :param word_list: the word list to insert into
+  :param words_to_insert: the words to attempt to insert into the word list
+  """
   success = []
   fail = []
   
@@ -33,12 +49,9 @@ def insert_words(word_list: list, words_to_insert: tuple) -> str:
     else:
       fail.append(word)
   
-  print(f"Failed to insert: {' '.join(fail)}")
+  if len(fail) > 0:
+    print(f"Failed to insert: {' '.join(fail)}")
   print(f"Successfully inserted: {' '.join(success)}")
-  
-  contents = '\n'.join(word_list)
-
-  return contents
 
 def main():
   words_to_insert = parse_args()
@@ -48,8 +61,10 @@ def main():
   with open(file, 'r') as word_file:
     word_list = [word.strip() for word in word_file]
 
-  contents = insert_words(word_list, words_to_insert)
-    
+  insert_words(word_list, words_to_insert)
+  
+  contents = '\n'.join(word_list)
+  
   with open(file, 'w') as word_file:
     word_file.write(contents)
 
