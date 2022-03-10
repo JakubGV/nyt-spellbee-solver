@@ -2245,6 +2245,7 @@ appalled
 appalling
 appallingly
 appals
+apparat
 apparatchik
 apparatchiks
 apparatus
@@ -40816,6 +40817,7 @@ rattles
 rattlesnake
 rattlesnakes
 rattling
+rattrap
 ratty
 raucous
 raucously

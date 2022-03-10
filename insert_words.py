@@ -35,7 +35,7 @@ def insert_word(word_list: list, word_to_insert: str) -> bool:
   
 def insert_words(word_list: list, words_to_insert: tuple) -> None:
   """
-  insert_words tries to insert a tuple of words into the word list and keeps track of which were successful and which weren't.
+  insert_words tries to insert a tuple of words into the word list and prints which were successful and which weren't.
 
   :param word_list: the word list to insert into
   :param words_to_insert: the words to attempt to insert into the word list
@@ -51,7 +51,8 @@ def insert_words(word_list: list, words_to_insert: tuple) -> None:
   
   if len(fail) > 0:
     print(f"Failed to insert: {' '.join(fail)}")
-  print(f"Successfully inserted: {' '.join(success)}")
+  if len(success) > 0:
+    print(f"Successfully inserted: {' '.join(success)}")
 
 def main():
   words_to_insert = parse_args()
