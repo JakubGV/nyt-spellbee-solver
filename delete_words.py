@@ -60,9 +60,9 @@ def delete_words(word_list: list, words_to_delete: tuple) -> None:
     delete_indices(word_list, indices_to_delete)
 
     if len(fail) > 0:
-        print(f"Failed to insert: {' '.join(fail)}")
+        print(f"Failed to delete: {' '.join(fail)}")
     if len(success) > 0:
-        print(f"Successfully inserted: {' '.join(success)}")
+        print(f"Successfully deleted: {' '.join(success)}")
 
 def main():
     words_to_delete = parse_args()

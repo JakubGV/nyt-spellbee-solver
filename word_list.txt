@@ -1307,7 +1307,6 @@ alertness
 alerts
 ales
 alfalfa
-alfatah
 alga
 algae
 algal
@@ -2138,6 +2137,7 @@ antlion
 antlions
 antonym
 antonyms
+antonymy
 antral
 antrum
 ants
@@ -2279,6 +2279,7 @@ appellants
 appellate
 appellation
 appellations
+appellee
 append
 appendage
 appendages
@@ -32567,6 +32568,7 @@ monomers
 monomial
 monomials
 monomolecular
+mononym
 monophonic
 monophthongs
 monoplane
@@ -35738,7 +35740,6 @@ pallets
 palliative
 palliatives
 pallid
-pallmall
 pallor
 palls
 palm
@@ -36457,7 +36458,7 @@ pedagogically
 pedagogue
 pedagogy
 pedal
-pedalled
+pedaled
 pedalling
 pedals
 pedant
