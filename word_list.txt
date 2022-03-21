@@ -8987,6 +8987,7 @@ coated
 coathanger
 coating
 coatings
+coatroom
 coats
 coauthor
 coauthored
@@ -19594,6 +19595,7 @@ flagrantly
 flags
 flagship
 flagships
+flail
 flair
 flak
 flake
@@ -23064,6 +23066,7 @@ halfsister
 halftruth
 halftruths
 halfway
+halfwit
 halibut
 halifax
 halite
@@ -25316,6 +25319,7 @@ immunised
 immunises
 immunities
 immunity
+immunized
 immunoassay
 immunocompromised
 immunodeficiency
@@ -32480,6 +32484,7 @@ momentary
 momentous
 moments
 momentum
+momma
 moms
 monaco
 monadic
@@ -32678,6 +32683,7 @@ morally
 morals
 morass
 morasses
+moratoria
 moratorium
 moray
 morays
@@ -51041,6 +51047,7 @@ tat
 tattered
 tatters
 tattle
+tattletale
 tattoo
 tattooed
 tattooing
@@ -51978,6 +51985,7 @@ tier
 tiered
 tiers
 ties
+tiff
 tiger
 tigerish
 tigers

@@ -1,13 +1,13 @@
 import argparse
 
 def parse_args() -> tuple:
-  parser = argparse.ArgumentParser(description='Insert a word into the specified word list.')
+  parser = argparse.ArgumentParser(description='Insert words into the word list.')
   parser.add_argument('words', nargs='*', help='The words to insert.')
 
   args = parser.parse_args()
 
   if len(args.words) < 1:
-    raise ValueError('No word provided to insert')
+    raise ValueError('No words provided to insert')
 
   return tuple(args.words)
 
