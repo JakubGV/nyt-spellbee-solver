@@ -34,8 +34,10 @@ class SpellingBeeSolver:
         :param letters: the letters of the day's spelling bee (first letter is the must include letter)
         :return: a tuple of words matching the specified letters
         """
+        if len(letters) != 7:
+            raise ValueError("Only 7 letters may be provided")
+        
         found_words = []
-  
         for word in self._word_list:
             valid_word = True
             if len(word) < 4 or letters[0] not in word:
