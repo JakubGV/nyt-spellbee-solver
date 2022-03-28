@@ -1,7 +1,7 @@
 # nyt-spellbee-solver
 
 ## Description
-nyt-spellbee-solver is a quick little script I made after I could not for the life of me find the pangram in the New York Times' [spelling bee](https://www.nytimes.com/puzzles/spelling-bee). For those of you who haven't played, please go try a round and you might perhaps better understand the rational behind this project.
+nyt-spellbee-solver is a quick little script I made after I could not for the life of me find the pangram in the New York Times' [spelling bee](https://www.nytimes.com/puzzles/spelling-bee). For those of you who haven't played, please go try a round and you might perhaps better understand the rationale behind this project.
 
 All [solve.py](./solve.py) does is take the letters used in the spelling bee as an input and find all the words it can from the [word list](./word_list.txt).
 
@@ -16,6 +16,9 @@ With no dependencies, all you need is a recent version of Python (this was built
 From the command line, a simple `py solve.py lpubicy` will print out all the words it finds with letters 'l', 'p', 'u', 'b', 'i', 'c', and 'y'. Keep in mind the first letter provided will be used as the 'must have' letter (e.g. 'l').
 
 I also created a script called [insert_words.py](./insert_words.py) to support the vision of growing the word list to return better and better answers. Run the script with any number of words as the command line arguments and it will insert them, in alphabetical order, into the word list.
+
+## Development into an API
+As I worked more on this project, I decided to create an API for this script in order to access and run it from anywhere and to be able to share it with my friends. I created [app.py](./app.py) which is a basic Flask app which bundles the logic of the solver into an endpoint '/solve'. In doing this, I learned about Google Cloud Run and how to create a container using Docker of the Flask app to deploy to the cloud. Check out the [web app](https://github.com/JakubGV/solve-spelling-bee) I built using React that connects to this Flask app!
 
 ## Credits
 The original word list I used at the very start of this program is not mine but Mieliestronk's. A link to that original word list is [here](http://www.mieliestronk.com/wordlist.html).

@@ -1,8 +1,10 @@
 import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from spelling_bee_solver import SpellingBeeSolver
 
 app = Flask(__name__)
+CORS(app)
 solver = SpellingBeeSolver('word_list.txt')
 
 @app.route("/solve", methods=['GET'])
