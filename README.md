@@ -20,5 +20,11 @@ I also created a script called [insert_words.py](./insert_words.py) to support t
 ## Development into an API
 As I worked more on this project, I decided to create an API for this script in order to access and run it from anywhere and to be able to share it with my friends. I created [app.py](./app.py) which is a basic Flask app which bundles the logic of the solver into an endpoint '/solve'. In doing this, I learned about Google Cloud Run and how to create a container using Docker of the Flask app to deploy to the cloud. Check out the [web app](https://github.com/JakubGV/solve-spelling-bee) I built using React that connects to this Flask app!
 
+## What I learned
+* Designing reusable, object-oriented classes in Python
+* Using a Dockerfile to create a container for a Flask app to deploy to Google Cloud Run as a free hosting server
+* Designing good API endpoints
+* Creating a requirements file to help with sharing
+
 ## Credits
 The original word list I used at the very start of this program is not mine but Mieliestronk's. A link to that original word list is [here](http://www.mieliestronk.com/wordlist.html).
